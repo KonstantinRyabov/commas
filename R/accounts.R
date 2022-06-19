@@ -15,6 +15,7 @@ auth_google <- Sys.getenv("GKEY")
 link <- credentals[["LINK_ACC"]]
 secret_key <- credentals[["SECRET"]]
 api_key <- credentals[["API_KEY"]]
+name_google <- credentals[["GNAME"]]
 
 # paths ----
 accounts <- "/ver1/accounts"
