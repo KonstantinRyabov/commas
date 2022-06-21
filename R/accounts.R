@@ -146,7 +146,7 @@ gs4_auth(path = name_google)
 
 # write to table ----
 write_sheet(
-  trade_acc,
+  all_results,
   link,
   "Accounts"
 )
