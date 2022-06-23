@@ -151,19 +151,19 @@ last_7d_profit <- deals_data |>
   filter(week == max(.data$week)) |>
   filter(closed_at >= week) |>
   group_by(id, week) |>
-  summarise(last_7d_profit = sum(usd_final_profit)) |>
+  summarise(last_7d_usd_profit = sum(usd_final_profit)) |>
   ungroup() |>
   select(-week)
 
 last_30d_profit <- deals_data |>
   group_by(id) |>
   filter(between(closed_at, now_date - days(30), now_date)) |>
-  summarise(last_30d_profit = sum(usd_final_profit))
+  summarise(last_30d_usd_profit = sum(usd_final_profit))
 
 this_month_profit <- deals_data |>
   mutate(month = floor_date(closed_at, "month")) |>
   group_by(id, month) |>
-  summarise(this_month_profit = sum(usd_final_profit)) |>
+  summarise(this_month_usd_profit = sum(usd_final_profit)) |>
   ungroup() |>
   filter(month == max(.data$month)) |>
   select(-month)
