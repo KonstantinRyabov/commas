@@ -180,9 +180,9 @@ stats_acc <- accounts |>
     overall_usd_profit_bots = as.numeric(overall_usd_profit_bots),
     active_deals_usd_profit_bots = as.numeric(active_deals_usd_profit_bots),
     today_usd_profit_bots = as.numeric(today_usd_profit_bots),
-    last_7d_usd_profit = ifelse(is.na(last_7d_profit), 0, last_7d_profit),
-    last_30d_usd_profit = ifelse(is.na(last_30d_profit), 0, last_30d_profit),
-    this_month_usd_profit = ifelse(is.na(this_month_profit), 0, this_month_profit)
+    last_7d_usd_profit = ifelse(is.na(last_7d_usd_profit), 0, last_7d_usd_profit),
+    last_30d_usd_profit = ifelse(is.na(last_30d_usd_profit), 0, last_30d_usd_profit),
+    this_month_usd_profit = ifelse(is.na(this_month_usd_profit), 0, this_month_usd_profit)
   )
 
 # summary stats
