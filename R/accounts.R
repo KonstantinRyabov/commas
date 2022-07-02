@@ -193,7 +193,9 @@ summary_stat <- stats_acc |>
 all_results <- summary_acc |>
   bind_cols(summary_stat) |>
   add_row(stats_acc, .before = 2) |>
-  mutate(dt_load = as.character(now_date))
+  mutate(usd_amount = round(as.numeric(usd_amount), 4),
+         btc_amount = round(as.numeric(btc_amount), 8),
+         dt_load = as.character(now_date))
 
 ### auth ----
 file_con <- file(name_google)
