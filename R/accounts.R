@@ -17,10 +17,8 @@ name_db <- credentals[["NAME_DB"]]
 host_db <- credentals[["HOST_DB"]]
 user_db <- credentals[["USER_DB"]]
 password_db <- credentals[["PASSWORD_DB"]]
-link <- credentals[["LINK_ACC"]]
 secret_key <- credentals[["SECRET"]]
 api_key <- credentals[["API_KEY"]]
-name_google <- credentals[["GNAME"]]
 
 # paths ----
 accounts <- "/ver1/accounts"
