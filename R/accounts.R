@@ -9,10 +9,14 @@ library(glue)
 library(googlesheets4)
 library(lubridate)
 library(jsonlite)
+library(DBI)
 
 # credentals ----
 credentals <- fromJSON(Sys.getenv("credentals"))
-auth_google <- Sys.getenv("GKEY")
+name_db <- credentals[["NAME_DB"]]
+host_db <- credentals[["HOST_DB"]]
+user_db <- credentals[["USER_DB"]]
+password_db <- credentals[["PASSWORD_DB"]]
 link <- credentals[["LINK_ACC"]]
 secret_key <- credentals[["SECRET"]]
 api_key <- credentals[["API_KEY"]]
@@ -195,17 +199,13 @@ all_results <- summary_acc |>
   add_row(stats_acc, .before = 2) |>
   mutate(usd_amount = round(as.numeric(usd_amount), 4),
          btc_amount = round(as.numeric(btc_amount), 8),
-         dt_load = as.character(now_date))
-
-### auth ----
-file_con <- file(name_google)
-writeLines(auth_google, file_con)
-close(file_con)
-gs4_auth(path = name_google)
+         dt_load = as_datetime(as.character(now_date)))
 
 # write to table ----
-write_sheet(
-  all_results,
-  link,
-  "Accounts"
-)
+con <- dbConnect(RPostgres::Postgres(),
+                 dbname = name_db,
+                 host = host_db,
+                 user = user_db,
+                 password = password_db)
+
+dbWriteTable(con, "accounts", all_results, append = TRUE)
