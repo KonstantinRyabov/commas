@@ -26,7 +26,7 @@ deals <- "/ver1/deals?limit=1000"
 
 # utils ----
 time_local <- "Europe/Moscow"
-delay <- 3
+delay <- 0.6
 now_date <- now(tzone = time_local)
 
 # functions ----
